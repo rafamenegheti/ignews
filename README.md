@@ -1,6 +1,6 @@
 # ignews
 Ignews is a fully working Newlester application made with NextJS, Stripe, FaunaDB, PrismicCMS and NextAuth in the RocketSeat classes.
-
+Access it here: https://ignews-rafamenegheti.vercel.app/
 
 
 ## Runing it
