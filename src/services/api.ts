@@ -1,5 +1,9 @@
 import axios from "axios";
+import { Router } from 'next/router'
+
+const url = Router.arguments.baseURL
 
 export const api = axios.create({
-    baseURL: 'https://ignews-4646p61a0-rafamenegheti.vercel.app/api'
+
+    baseURL: url
 })
