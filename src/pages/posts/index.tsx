@@ -25,7 +25,7 @@ export default function Posts({ posts }: PostsProps) {
 
       <main className={styles.container}>
         <div className={styles.posts}>
-          {posts.map((post) => (
+          {posts?.map((post) => (
             <Link href={`posts/preview/${post.slug}`} key={ post.slug }>
               <a >
                 <time>{post.updatedAt}</time>
@@ -38,6 +38,13 @@ export default function Posts({ posts }: PostsProps) {
       </main>
     </>
   );
+}
+
+
+export async function getStaticPaths() {
+  return {
+    fallback: true,
+  }
 }
 
 export const getStaticProps: GetStaticProps = async () => {
