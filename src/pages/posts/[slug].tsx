@@ -21,16 +21,18 @@ export default function Post({ post }: PostProps) {
         <title>{post.title} | Ignews</title>
       </Head>
 
-      <main className={styles.container}>
-        <article className={styles.post}>
-          <h1>{post.title}</h1>
-          <time>{post.updatedAt}</time>
-          <div
-            className={styles.postContent}
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
-        </article>
-      </main>
+      {post && (
+        <main className={styles.container}>
+          <article className={styles.post}>
+            <h1>{post.title}</h1>
+            <time>{post.updatedAt}</time>
+            <div
+              className={styles.postContent}
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
+          </article>
+        </main>
+      )}
     </>
   );
 }
@@ -71,7 +73,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   return {
     props: {
-      post,
+      post: post || null,
     },
   };
 };

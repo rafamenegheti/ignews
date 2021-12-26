@@ -26,8 +26,8 @@ export default function Posts({ posts }: PostsProps) {
       <main className={styles.container}>
         <div className={styles.posts}>
           {posts?.map((post) => (
-            <Link href={`posts/preview/${post.slug}`} key={ post.slug }>
-              <a >
+            <Link href={`posts/preview/${post.slug}`} key={post.slug}>
+              <a>
                 <time>{post.updatedAt}</time>
                 <strong>{post.title}</strong>
                 <p>{post.excerpt}</p>
@@ -40,8 +40,6 @@ export default function Posts({ posts }: PostsProps) {
   );
 }
 
-
-
 export const getStaticProps: GetStaticProps = async () => {
   const prismic = getPrismicClient();
 
@@ -53,7 +51,8 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   );
 
-  const posts = response.results.map((post) => {
+  const posts = response?.results?.map((post) => {
+
     return {
       slug: post.uid,
       title: RichText.asText(post.data.title),
@@ -75,6 +74,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       posts,
     },
-    revalidate: 60 * 30 // 30 minutes
+    revalidate: 60 * 30, // 30 minutes
   };
 };
